@@ -2,149 +2,286 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AutoCareBogota — Detailing & Lavado Premium</title>
-
-  <meta name="description" content="AutoCareBogota - Lavado y detailing premium en Bogotá. Reserva online, servicios profesionales y convenios con marcas reconocidas." />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoCareBogota — Lavado & Detailing Premium</title>
   <style>
-    :root{
-      --bg:#f4f6f9;
-      --card:#ffffff;
-      --primary:#0b3a66; /* azul oscuro elegante */
-      --accent:#c5d9ef;  /* gris-azulado suave */
-      --muted:#6b7280;
-      --radius:12px;
-      --container:1100px;
+    :root {
+      --primary: #0b3a66;
+      --dark: #08314a;
+      --accent: #c5d9ef;
+      --bg: #f4f6f9;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --radius: 12px;
+      --container: 1100px;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter, "Segoe UI", Arial, sans-serif;
-      background:var(--bg);
-      color:#0f1720;
-      -webkit-font-smoothing:antialiased;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: #0f1720;
+      -webkit-font-smoothing: antialiased;
     }
-
-    /* Header */
-    header{
-      background:linear-gradient(90deg,var(--primary),#08314a);
-      color:white;
-      padding:20px 16px;
+    header {
+      background: linear-gradient(90deg, var(--primary), var(--dark));
+      color: white;
+      padding: 20px 16px;
     }
-    .top{
-      max-width:var(--container);
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
+    .top {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .brand {
-      display:flex;
-      flex-direction:column;
+    .brand h1 {
+      font-size: 1.5rem;
+      letter-spacing: 0.2px;
     }
-    .brand h1{margin:0;font-size:1.25rem;letter-spacing:0.2px}
-    .brand small{opacity:.9;font-size:0.85rem}
-
-    .cta-top{
-      background:transparent;
-      border:1px solid rgba(255,255,255,0.15);
-      padding:8px 14px;
-      border-radius:999px;
-      color:white;
-      font-weight:700;
-      text-decoration:none;
+    .brand small {
+      font-size: 0.9rem;
+      opacity: 0.9;
     }
-    .cta-top:hover{background:rgba(255,255,255,0.06)}
-
-    /* Nav */
-    nav{background:#08314a; position:sticky; top:0; z-index:80; box-shadow:0 4px 14px rgba(2,6,23,0.06)}
-    .nav-wrap{max-width:var(--container); margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:8px 16px}
-    .menu{display:flex; gap:14px; align-items:center}
-    .menu a{color:white; text-decoration:none; font-weight:600; padding:8px 10px; border-radius:8px}
-    .menu a:hover{background:var(--accent); color:var(--primary)}
-
-    /* Hero */
-    .hero{max-width:var(--container); margin:28px auto; display:grid; grid-template-columns:1fr 440px; gap:24px; padding:0 16px}
-    .hero-card{background:var(--card); border-radius:var(--radius); padding:26px; box-shadow:0 12px 30px rgba(12,17,43,0.06)}
-    .hero-left h2{margin:0 0 10px; color:var(--primary); font-size:1.6rem}
-    .hero-left p{margin:0 0 16px; color:var(--muted)}
-    .btn-primary{background:var(--primary); color:white; border:0; padding:12px 16px; border-radius:10px; font-weight:700; cursor:pointer}
-    .btn-ghost{background:transparent; color:var(--primary); border:1px solid #e6eef9; padding:10px 14px; border-radius:10px; cursor:pointer}
-
-    .hero-image{border-radius:var(--radius); overflow:hidden; box-shadow:0 12px 30px rgba(12,17,43,0.06)}
-    .hero-image img{width:100%; height:100%; object-fit:cover; display:block; max-height:380px}
-
-    /* Main */
-    main{max-width:var(--container); margin:20px auto; padding:8px 16px}
-
-    .card{background:var(--card); border-radius:var(--radius); padding:18px; margin-bottom:18px; box-shadow:0 8px 20px rgba(12,17,43,0.04)}
-    h2.section{margin:0 0 10px; color:var(--primary)}
-
-    /* Services */
-    .services{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:12px}
-    .service{border-radius:10px; overflow:hidden; transition:transform .25s ease, box-shadow .25s ease; background:linear-gradient(180deg,#fff,#fbfdff)}
-    .service:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(12,17,43,0.09)}
-    .service img{width:100%; height:220px; object-fit:cover; display:block}
-    .service .meta{padding:12px}
-    .service h3{margin:0 0 8px}
-    .service p{margin:0;color:var(--muted);font-size:0.95rem}
-
-    /* Brands */
-    .brands{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:center; padding:10px 0}
-    .brand-logo{background:var(--card); padding:10px 14px; border-radius:12px; box-shadow:0 6px 18px rgba(12,17,43,0.04); display:flex; align-items:center; gap:12px}
-    .brand-logo img{height:34px; display:block}
-
-    /* Form + contact */
-    .grid-2{display:grid; grid-template-columns:1fr 380px; gap:18px}
-    .form-embed{width:100%; height:700px; border:0; border-radius:10px}
-    .contact-box{padding:12px; border-radius:10px; background:linear-gradient(180deg,#fff,#fbfdff); box-shadow:0 8px 20px rgba(12,17,43,0.04)}
-    .contact-box p{margin:8px 0; color:var(--muted)}
-    .contact-box a{color:var(--primary); text-decoration:none; font-weight:700}
-
-    /* Map */
-    .map{margin-top:12px; border-radius:10px; overflow:hidden; box-shadow:0 8px 20px rgba(12,17,43,0.06)}
-    .map iframe{width:100%; height:360px; border:0; display:block}
-
-    footer{max-width:var(--container); margin:26px auto 40px; padding:18px 16px; text-align:center; color:#fff; background:linear-gradient(90deg,var(--primary),#08314a); border-radius:10px}
-
-    /* Responsive */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr; gap:18px}
-      .services{grid-template-columns:repeat(2,1fr)}
-      .grid-2{grid-template-columns:1fr}
-      .hero-image img{max-height:320px}
+    .cta-top {
+      background: var(--accent);
+      color: var(--dark);
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none;
     }
-    @media (max-width:640px){
-      .services{grid-template-columns:1fr}
-      .menu{display:none}
+    nav {
+      background: var(--dark);
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      box-shadow: 0 4px 14px rgba(2,6,23,0.06);
+    }
+    .nav-wrap {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
+    .menu {
+      display: flex;
+      gap: 16px;
+    }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    .menu a:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+    .hero {
+      max-width: var(--container);
+      margin: 28px auto;
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 24px;
+      padding: 0 16px;
+    }
+    .hero-left {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 12px 30px rgba(12,17,43,0.06);
+    }
+    .hero-left h2 {
+      color: var(--primary);
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    .hero-left p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--primary);
+      padding: 10px 14px;
+      border: 1px solid #e6eef9;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-left: 12px;
+    }
+    .hero-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(12,17,43,0.06);
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      max-height: 380px;
+    }
+    main {
+      max-width: var(--container);
+      margin: 20px auto;
+      padding: 8px 16px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 20px rgba(12,17,43,0.04);
+    }
+    h2.section {
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .service {
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+      background: linear-gradient(180deg,#fff,#fbfdff);
+    }
+    .service:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(12,17,43,0.09);
+    }
+    .service img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .service .meta {
+      padding: 12px;
+    }
+    .service h3 {
+      margin: 0 0 8px;
+    }
+    .service p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .brands {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+    }
+    .brand-logo {
+      background: var(--card);
+      padding: 10px 14px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(12,17,43,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 110px;
+      height: 50px;
+    }
+    .brand-logo img {
+      height: 34px;
+      display: block;
+      margin: 0 auto;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 18px;
+    }
+    .form-embed {
+      width: 100%;
+      height: 700px;
+      border: 0;
+      border-radius: 10px;
+    }
+    .contact-box {
+      padding: 14px;
+      border-radius: 10px;
+      background: linear-gradient(180deg,#fff,#fbfdff);
+      box-shadow: 0 8px 20px rgba(12,17,43,0.04);
+    }
+    .contact-box p {
+      margin: 8px 0;
+      color: var(--muted);
+    }
+    .contact-box a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .map {
+      margin-top: 16px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(12,17,43,0.06);
+    }
+    .map iframe {
+      width: 100%;
+      height: 360px;
+      border: 0;
+      display: block;
+    }
+    footer {
+      max-width: var(--container);
+      margin: 28px auto 40px;
+      padding: 18px 16px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(90deg, var(--primary), var(--dark));
+      border-radius: 10px;
+    }
+    @media (max-width:980px) {
+      .hero { grid-template-columns:1fr; gap:18px; }
+      .services { grid-template-columns:repeat(2,1fr); }
+      .grid-2 { grid-template-columns:1fr; }
+      .hero-image img { max-height:320px; }
+    }
+    @media (max-width:640px) {
+      .services { grid-template-columns:1fr; }
+      .menu { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <div class="top">
       <div class="brand">
         <h1>AutoCareBogota</h1>
         <small>Detalle automotriz y lavado premium — Bogotá</small>
       </div>
-
-      <div style="display:flex; gap:12px; align-items:center">
-        <a class="cta-top" href="#formulario">Reservar ahora</a>
-      </div>
+      <a class="cta-top" href="#formulario">Reservar ahora</a>
     </div>
   </header>
 
-  <!-- NAV -->
   <nav aria-label="Navegación principal">
     <div class="nav-wrap">
-      <div style="font-weight:700;color:white">AutoCareBogota</div>
-
-      <div class="menu" role="navigation" aria-label="Enlaces principales">
+      <div style="color:white; font-weight:700">AutoCareBogota</div>
+      <div class="menu" role="navigation">
         <a href="#inicio">Inicio</a>
         <a href="#nosotros">Quiénes Somos</a>
         <a href="#servicios">Servicios</a>
@@ -155,120 +292,72 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <section class="hero" id="inicio">
-    <div class="hero-card hero-left">
+    <div class="hero-left">
       <h2>Lavado & Detailing Premium en Bogotá</h2>
-      <p>AutoCareBogota ofrece cuidado profesional para tu vehículo: limpieza profunda, protección de pintura y servicios express para autos y flotas.</p>
-
-      <div style="display:flex; gap:12px; margin-top:16px;">
-        <button class="btn-primary" onclick="location.href='#formulario'">Reservar cita</button>
-        <button class="btn-ghost" onclick="document.getElementById('contacto').scrollIntoView()">Contactar</button>
-      </div>
-
-      <div style="margin-top:12px; color:var(--muted); font-size:0.95rem">
-        Horario: Lun–Sáb 8:00 – 18:00 · Atención a flotas corporativas
-      </div>
+      <p>AutoCareBogota ofrece cuidado profesional para tu vehículo: limpieza profunda, protección de pintura y servicio exprés para autos y flotas.</p>
+      <button class="btn-primary" onclick="location.href='#formulario'">Reservar cita</button>
+      <button class="btn-ghost" onclick="document.getElementById('contacto').scrollIntoView()">Contactar</button>
+      <div style="margin-top:12px;color:var(--muted);font-size:0.95rem">Horarios: Lun–Sáb 8:00 – 18:00 · Atención a flotas corporativas.</div>
     </div>
-
     <div class="hero-image">
-      <!-- Imagen elegante, conceptual, Unsplash (apta para GitHub Pages) -->
-      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80" alt="Auto brillante - AutoCareBogota">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80" alt="Auto brillante lavadero">
     </div>
   </section>
 
   <main>
-    <!-- QUIENES SOMOS -->
     <section class="card" id="nosotros">
       <h2 class="section">Quiénes Somos</h2>
       <p style="color:var(--muted)">En AutoCareBogota brindamos un servicio de detailing y lavado premium pensado para quienes exigen calidad, rapidez y cuidado experto. Usamos productos profesionales y técnicas que preservan la pintura y el interior del vehículo.</p>
     </section>
 
-    <!-- SERVICIOS -->
     <section class="card" id="servicios">
       <h2 class="section">Nuestros servicios</h2>
-
       <div class="services">
-        <article class="service" aria-labelledby="s1">
-          <img src="https://images.unsplash.com/photo-1542365867-1b4c7a7a1b18?auto=format&fit=crop&w=1200&q=80" alt="Lavado exterior premium">
-          <div class="meta">
-            <h3 id="s1">Lavado Exterior Premium</h3>
-            <p>Limpieza exterior con champús profesionales y secado sin marcas. Ideal para mantener el brillo y la protección de la pintura.</p>
-          </div>
-        </article>
-
-        <article class="service" aria-labelledby="s2">
-          <img src="https://images.unsplash.com/photo-1542366367-1b7b6fa3f6f2?auto=format&fit=crop&w=1200&q=80" alt="Detallado interior">
-          <div class="meta">
-            <h3 id="s2">Detallado Interior</h3>
-            <p>Aspirado profesional, limpieza de tapicería, tratamiento de piel y desodorización con productos premium.</p>
-          </div>
-        </article>
-
-        <article class="service" aria-labelledby="s3">
-          <img src="https://images.unsplash.com/photo-1422433555807-2559a27433bd?auto=format&fit=crop&w=1200&q=80" alt="Protección y ceras">
-          <div class="meta">
-            <h3 id="s3">Protección y Cera</h3>
-            <p>Aplicación de cera protectora y selladores para protección a largo plazo y acabado espejo.</p>
-          </div>
-        </article>
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1603781706648-3b0e2ea7d3db?auto=format&fit=crop&w=1200&q=80" alt="Lavado exterior premium">
+          <div class="meta"><h3>Lavado Exterior Premium</h3><p>Limpieza exterior con champús profesionales y secado sin marcas.</p></div>
+        </div>
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1542365867-1b4c7a7a1b18?auto=format&fit=crop&w=1200&q=80" alt="Detallado interior">
+          <div class="meta"><h3>Detallado Interior</h3><p>Aspirado profesional, limpieza de tapicería, tratamiento de piel y desodorización.</p></div>
+        </div>
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1542366367-1b7b6fa3f6f2?auto=format&fit=crop&w=1200&q=80" alt="Protección y cera">
+          <div class="meta"><h3>Protección y Cera</h3><p>Aplicación de cera protectora y selladores para acabado espejo a largo plazo.</p></div>
+        </div>
       </div>
     </section>
 
-    <!-- MARCAS -->
     <section class="card" id="marcas">
       <h2 class="section">Marcas y convenios</h2>
-      <p style="color:var(--muted)">Atendemos vehículos de las principales marcas y tenemos convenios para flotas corporativas.</p>
-
-      <div class="brands" aria-hidden="false">
-        <div class="brand-logo" title="BMW">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW">
-        </div>
-        <div class="brand-logo" title="Toyota">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_carlogo.svg" alt="Toyota">
-        </div>
-        <div class="brand-logo" title="Ford">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" alt="Ford">
-        </div>
-        <div class="brand-logo" title="Nissan">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Nissan_logo.svg" alt="Nissan">
-        </div>
-        <div class="brand-logo" title="Chevrolet">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Chevrolet_logo.svg" alt="Chevrolet">
-        </div>
+      <p style="color:var(--muted)">Atendemos vehículos de las principales marcas. Convenios corporativos disponibles.</p>
+      <div class="brands">
+        <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW"></div>
+        <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_carlogo.svg" alt="Toyota"></div>
+        <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" alt="Ford"></div>
+        <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Nissan_logo.svg" alt="Nissan"></div>
+        <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Chevrolet_logo.svg" alt="Chevrolet"></div>
       </div>
     </section>
 
-    <!-- FORMULARIO + CONTACTO -->
     <section class="card" id="formulario">
       <h2 class="section">Déjanos tus datos</h2>
-      <p style="color:var(--muted)">Completa el formulario y te contactaremos para confirmar la cita. (Si el Form solo permite 1 respuesta por cuenta, quita esa restricción en la configuración del Form).</p>
-
-      <div class="grid-2" role="region" aria-label="Formulario y contacto">
+      <p style="color:var(--muted)">Completa el formulario y te contactaremos para confirmar la cita.</p>
+      <div class="grid-2">
         <div>
-          <!-- Google Form embebido (tu enlace) -->
-          <iframe class="form-embed"
-            src="https://docs.google.com/forms/d/e/1FAIpQLSdKHUCu2xToM2RrZE-hM6Wf51gShGg-lrL22qKXsZeB-lnhKw/viewform?embedded=true"
-            title="Formulario AutoCareBogota" loading="lazy"></iframe>
+          <iframe class="form-embed" src="https://docs.google.com/forms/d/e/1FAIpQLSdKHUCu2xToM2RrZE-hM6Wf51gShGg-lrL22qKXsZeB-lnhKw/viewform?embedded=true" title="Formulario AutoCareBogota" loading="lazy"></iframe>
         </div>
-
         <aside class="contact-box" id="contacto">
           <h3>Contacto rápido</h3>
           <p><strong>Dirección:</strong> Calle 45 #15-60, Bogotá, Colombia</p>
           <p><strong>Teléfono / WhatsApp:</strong> <a href="tel:+573105551234">+57 310 555 1234</a></p>
           <p><strong>Email:</strong> <a href="mailto:contacto@autocarebogota.com">contacto@autocarebogota.com</a></p>
           <p><strong>Horario:</strong> Lun–Sáb 8:00 – 18:00</p>
-
-          <div style="margin-top:12px">
-            <a class="btn-primary" href="https://wa.me/573105551234" target="_blank" rel="noopener">Abrir WhatsApp</a>
-          </div>
-
+          <div style="margin-top:12px"><a class="btn-primary" href="https://wa.me/573105551234" target="_blank" rel="noopener">Abrir WhatsApp</a></div>
           <h3 style="margin-top:14px">Cómo llegar</h3>
           <div class="map">
-            <!-- Google Maps embed -->
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.908042468038!2d-74.0672786852345!3d4.64828374339021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99b45b9b9f27%3A0x89dcf63ef45c91b!2sCalle%2045%20%2315-60%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1696890508121!5m2!1ses!2sco"
-              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa AutoCareBogota"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.908042468038!2d-74.0672786852345!3d4.64828374339021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99b45b9b9f27%3A0x89dcf63ef45c91b!2sCalle%2045%20%2315-60%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1696890508121!5m2!1ses!2sco" allowfullscreen="" loading="lazy"></iframe>
           </div>
         </aside>
       </div>
@@ -276,16 +365,11 @@
 
   </main>
 
-  <footer>
-    &copy; <span id="year"></span> AutoCareBogota · Todos los derechos reservados
-  </footer>
+  <footer>&copy; <span id="year"></span> AutoCareBogota · Todos los derechos reservados</footer>
 
   <script>
-    // Año automático
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
 </body>
 </html>
-Actualización AutoCareBogota - versión elegante final
-
