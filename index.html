@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lavado Express — Tu lavadero profesional</title>
+<style>
+  :root{
+    --primary:#0b76d1;   /* azul corporativo */
+    --dark:#064b7a;
+    --accent:#ffcc00;
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --muted:#6b7280;
+    --radius:12px;
+    --container:1100px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:Inter, "Segoe UI", Arial, sans-serif;
+    background:var(--bg);color:#102027;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Header */
+  header{
+    background:linear-gradient(90deg,var(--primary),var(--dark));
+    color:white;padding:22px 16px;
+  }
+  header .top{
+    max-width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  header h1{margin:0;font-size:1.25rem;letter-spacing:0.2px}
+  header .cta-top{background:var(--accent);color:var(--dark);padding:10px 14px;border-radius:999px;font-weight:700;text-decoration:none}
+
+  /* Nav / Responsive */
+  nav{background:var(--dark);position:sticky;top:0;z-index:80;box-shadow:0 4px 14px rgba(2,6,23,0.06)}
+  .nav-wrap{max-width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:8px 16px}
+  .menu{display:flex;gap:18px;align-items:center}
+  .menu a{color:white;text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px}
+  .menu a:hover{background:var(--accent);color:var(--dark)}
+  .hamb{display:none;background:transparent;border:0;color:white;font-size:20px}
+
+  /* Hero */
+  .hero{
+    display:grid;grid-template-columns:1fr 480px;gap:28px;
+    align-items:center;max-width:var(--container);margin:28px auto;padding:10px 16px;
+  }
+  .hero-left{padding:22px;background:linear-gradient(180deg,#fff,#fbfdff);border-radius:var(--radius);box-shadow:0 12px 30px rgba(12,17,43,0.06)}
+  .hero-left h2{margin:0 0 10px;color:var(--dark);font-size:1.6rem}
+  .hero-left p{margin:0 0 16px;color:var(--muted)}
+  .hero-cta{display:flex;gap:12px;align-items:center}
+  .btn-primary{background:var(--primary);color:white;padding:12px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+  .btn-ghost{background:transparent;color:var(--dark);padding:10px 14px;border-radius:10px;border:1px solid #e6eef9;font-weight:600;cursor:pointer}
+
+  .hero-right{border-radius:var(--radius);overflow:hidden;box-shadow:0 12px 30px rgba(12,17,43,0.06)}
+  .hero-right img{width:100%;height:100%;display:block;object-fit:cover;max-height:380px}
+
+  /* Main container */
+  main{max-width:var(--container);margin:20px auto;padding:8px 16px}
+
+  /* Cards */
+  .card{background:var(--card);border-radius:var(--radius);padding:18px;margin-bottom:18px;box-shadow:0 8px 20px rgba(12,17,43,0.04)}
+  h2.section{margin:0 0 10px;color:var(--dark)}
+
+  /* Services grid with real photos */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}
+  .service{border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#fff,#fbfdff);transition:transform .25s ease,box-shadow .25s ease}
+  .service:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(12,17,43,0.09)}
+  .service img{width:100%;height:220px;object-fit:cover;display:block}
+  .service .meta{padding:12px}
+  .service h3{margin:0 0 8px;font-size:1.05rem}
+  .service p{margin:0;color:var(--muted);font-size:0.95rem}
+
+  /* Brands row */
+  .brands{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;padding:10px 0}
+  .brand-logo{background:white;padding:8px 12px;border-radius:12px;box-shadow:0 6px 18px rgba(12,17,43,0.04);display:flex;align-items:center;gap:10px}
+  .brand-logo img{height:36px;display:block}
+
+  /* Form + contact area */
+  .grid-2{display:grid;grid-template-columns:1fr 380px;gap:18px}
+  .form-embed{width:100%;height:700px;border:0;border-radius:10px;overflow:hidden}
+  .contact-box{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 8px 20px rgba(12,17,43,0.04)}
+  .contact-box p{margin:8px 0;color:var(--muted)}
+  .contact-box a{color:var(--primary);text-decoration:none;font-weight:700}
+
+  /* Map */
+  .map{margin-top:12px;border-radius:10px;overflow:hidden;box-shadow:0 8px 20px rgba(12,17,43,0.06)}
+  .map iframe{width:100%;height:360px;border:0;display:block}
+
+  footer{max-width:var(--container);margin:26px auto 40px;padding:18px 16px;text-align:center;color:#fff;background:linear-gradient(90deg,var(--primary),var(--dark));border-radius:10px}
+
+  /* responsive */
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr;gap:18px}
+    .services{grid-template-columns:repeat(2,1fr)}
+    .grid-2{grid-template-columns:1fr}
+    .hero-right{max-height:320px}
+  }
+  @media (max-width:640px){
+    .menu{display:none}
+    .hamb{display:inline-block}
+    header .top{flex-direction:column;align-items:flex-start;gap:12px}
+    .services{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="top">
+    <div>
+      <h1>Lavado Express</h1>
+      <div style="font-size:0.95rem;opacity:0.95">Tu vehículo limpio y protegido — rápido y profesional</div>
+    </div>
+    <a class="cta-top" href="#formulario">Reservar ahora</a>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav aria-label="Navegación principal">
+  <div class="nav-wrap">
+    <div style="display:flex;align-items:center;gap:16px">
+      <div style="color:white;font-weight:700">Lavado Express</div>
+    </div>
+
+    <div class="menu" role="navigation" aria-label="Enlaces principales">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Quiénes Somos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#marcas">Marcas</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#formulario">Déjanos tus datos</a>
+    </div>
+
+    <button class="hamb" aria-label="Abrir menú" onclick="document.querySelector('.menu').classList.toggle('show')">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio" aria-label="Hero">
+  <div class="hero-left">
+    <h2>Lavado Express — calidad profesional en minutos</h2>
+    <p>Servicio rápido, productos biodegradables y detalle premium. Agenda tu cita y recibe 20% en tu primer lavado.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="location.href='#formulario'">Reservar cita</button>
+      <button class="btn-ghost" onclick="document.getElementById('contacto').scrollIntoView()">Contactar</button>
+    </div>
+    <div style="margin-top:14px;color:var(--muted);font-size:0.95rem">Atendemos vehículos particulares y flotas corporativas. Horario: Lun-Sáb 8:00–18:00</div>
+  </div>
+
+  <div class="hero-right" aria-hidden="false">
+    <!-- Imagen profesional (Unsplash, sin hotlink problem usual) -->
+    <img src="https://images.unsplash.com/photo-1542365867-1b4c7a7a1b18?auto=format&fit=crop&w=1400&q=80" alt="Lavado profesional">
+  </div>
+</section>
+
+<main>
+
+  <!-- QUIENES SOMOS -->
+  <section class="card" id="nosotros">
+    <h2 class="section">Quiénes Somos</h2>
+    <p style="color:var(--muted)">Lavado Express es un lavadero profesional dedicado al cuidado del vehículo. Usamos técnicas modernas, productos eco-friendly y personal capacitado para garantizar resultados de alta calidad en tiempos reducidos.</p>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="card" id="servicios">
+    <h2 class="section">Servicios destacados</h2>
+
+    <div class="services">
+      <article class="service" aria-labelledby="s1">
+        <img src="https://images.unsplash.com/photo-1603781706648-3b0e2ea7d3db?auto=format&fit=crop&w=1200&q=80" alt="Lavado básico profesional">
+        <div class="meta">
+          <h3 id="s1">Lavado Básico</h3>
+          <p>Limpieza exterior con champú premium, aspirado, limpieza de vidrios y llantas. Rápido y económico.</p>
+        </div>
+      </article>
+
+      <article class="service" aria-labelledby="s2">
+        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80" alt="Lavado premium y detallado">
+        <div class="meta">
+          <h3 id="s2">Lavado Premium + Detailing</h3>
+          <p>Lavado completo, cera protectora, limpieza profunda interior, tratamiento de tapicería y aromatizante.</p>
+        </div>
+      </article>
+
+      <article class="service" aria-labelledby="s3">
+        <img src="https://images.unsplash.com/photo-1542365869-5f6c0c3f2f4f?auto=format&fit=crop&w=1200&q=80" alt="Lavado de motor profesional">
+        <div class="meta">
+          <h3 id="s3">Lavado de Motor</h3>
+          <p>Desengrase seguro y detallado del motor con productos no corrosivos y técnicas de baja presión.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- MARCAS / CONVENIOS -->
+  <section class="card" id="marcas">
+    <h2 class="section">Marcas y convenios</h2>
+    <p style="color:var(--muted)">Colaboramos con vehículos y flotas de las principales marcas. Convenios de servicio corporativo y mantenimiento estético.</p>
+
+    <div class="brands" aria-hidden="false">
+      <!-- Logos desde Wikimedia Commons (confiables) -->
+      <div class="brand-logo" title="BMW"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW logo"><span style="font-weight:700">BMW</span></div>
+      <div class="brand-logo" title="Toyota"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_carlogo.svg" alt="Toyota logo"><span style="font-weight:700">Toyota</span></div>
+      <div class="brand-logo" title="Ford"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" alt="Ford logo"><span style="font-weight:700">Ford</span></div>
+      <div class="brand-logo" title="Nissan"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Nissan_logo.svg" alt="Nissan logo"><span style="font-weight:700">Nissan</span></div>
+      <div class="brand-logo" title="Chevrolet"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Chevrolet_logo.svg" alt="Chevrolet logo"><span style="font-weight:700">Chevrolet</span></div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO Y CONTACTO -->
+  <section class="card" id="formulario">
+    <h2 class="section">Déjanos tus datos</h2>
+    <p style="color:var(--muted)">Completa el formulario y te contactamos para confirmar tu cita. (Si el formulario permite una sola respuesta por cuenta, revisa la configuración en Google Forms).</p>
+
+    <div class="grid-2" role="region" aria-label="Formulario y contacto">
+      <div>
+        <!-- Google Form embebido: tu formulario -->
+        <iframe class="form-embed"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdKHUCu2xToM2RrZE-hM6Wf51gShGg-lrL22qKXsZeB-lnhKw/viewform?embedded=true"
+          title="Formulario — Lavado Express" loading="lazy"></iframe>
+      </div>
+
+      <aside class="contact-box" id="contacto">
+        <h3>Contacto rápido</h3>
+        <p><strong>Dirección:</strong> Calle 45 #15-60, Bogotá, Colombia</p>
+        <p><strong>Teléfono:</strong> <a href="tel:+573105551234">+57 310 555 1234</a></p>
+        <p><strong>Email:</strong> <a href="mailto:contacto@lavadoexpress.com">contacto@lavadoexpress.com</a></p>
+        <p><strong>Horario:</strong> Lun–Sáb 8:00 – 18:00</p>
+
+        <div style="margin-top:12px">
+          <a class="btn-primary" href="https://wa.me/573105551234" target="_blank" rel="noopener">Abrir WhatsApp</a>
+        </div>
+
+        <h3 style="margin-top:18px">Cómo llegar</h3>
+        <div class="map">
+          <!-- Google Maps embed: ubicación Calle 45 #15-60, Bogotá -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.908042468038!2d-74.0672786852345!3d4.64828374339021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99b45b9b9f27%3A0x89dcf63ef45c91b!2sCalle%2045%20%2315-60%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1696890508121!5m2!1ses!2sco"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa Lavado Express"></iframe>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; <span id="year"></span> Lavado Express · Todos los derechos reservados
+</footer>
+
+<script>
+  // año dinámico
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // menú simple para móviles (si quieres personalizar)
+  document.querySelector('.hamb')?.addEventListener('click', function(){
+    document.querySelector('.menu')?.classList.toggle('show');
+  });
+</script>
+</body>
+</html>
